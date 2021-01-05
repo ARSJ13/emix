@@ -1,5 +1,5 @@
 <template>
-  <button :style="background">
+  <button :style="style">
     <span class="material-icons">
       {{ icon }} 
     </span>
@@ -19,7 +19,7 @@ export default {
     icon: String,
     number: Number,
     letter: String,
-    background: String
+    style: String
   }
 }
 </script>
@@ -27,7 +27,6 @@ export default {
 <style scoped>
   button{
     border: none;
-    background: #373737;
     cursor: pointer;
     outline-style: none;
     display: flex;
@@ -35,10 +34,10 @@ export default {
     align-items: center;
   }
   button:active{
-    background:#006A6A;
+    background: var(--color-green); 
   }
   span{
-    color: #EFEFEF;
+    color: var(--color-white);
     font-size: 1.5rem;
   }
   .number{
