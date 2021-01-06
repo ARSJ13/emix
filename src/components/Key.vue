@@ -1,5 +1,5 @@
 <template>
-  <button :style="style">
+  <button :value="value" :style="style" @click="click">
     <span class="material-icons">
       {{ icon }} 
     </span>
@@ -19,12 +19,37 @@ export default {
     icon: String,
     number: Number,
     letter: String,
-    style: String
+    value: String,
+    click: Function
+  },
+  data () {
+    return {
+      style: ''
+    }
+  },
+  methods: {
+    upgradeBackground () {
+      if (this.icon || this.letter || this.icon === 'backspace') {
+        this.style = 'background: var(--color-darkgrey);'
+      } 
+      if (this.icon === 'drag_handle') {
+        this.style = 'background: var(--color-orange);'
+      } 
+      if (this.number) {
+        this.style = 'background: var(--color-grey);'
+      }
+      if (this.letter === '.' || this.letter === '+/-' || this.number === 0){
+        this.style = 'background: var(--color-grey);'
+      }
+    }
+  },
+  created () {
+    this.upgradeBackground ();
   }
 }
 </script>
 
-<style scoped>
+<style>
   button{
     border: none;
     cursor: pointer;
@@ -32,9 +57,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 100ms;
   }
-  button:active{
-    background: var(--color-green); 
+  button:active {
+    transform: translate(1px, 1px);
   }
   span{
     color: var(--color-white);
