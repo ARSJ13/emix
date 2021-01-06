@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
       <header class="header-container">
-        <img src="../assets/logo.png" alt="Logo">
+        <img src="@/assets/logo.png" alt="Logo">
       </header>
       <main class="main-container">
         <section class="result-content">
@@ -81,11 +81,13 @@ export default {
         this.validationNumber = true;
       }
     },
-    upgradeResult() {
+    async upgradeResult() {
       if (this.number) {
-        this.resultado = evaluate(this.number);
+        this.resultado = await evaluate(this.number);
+        if (this.resultado === Infinity) {
+          this.resultado = 'Não é possível realizar a divisão por 0'
+        }
         this.result = true;
-        console.log(this.resultado)
       }
     }
   }

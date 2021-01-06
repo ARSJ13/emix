@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Calc from './components/Calc'
+import Calc from '@/components/Calc'
 export default {
   name: 'App',
   components: {
