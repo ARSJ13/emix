@@ -64,7 +64,6 @@ export default {
       this.validationNumber = false;
     },
     validationOperator({target}) {
-      console.log(target.innerText)
       if (this.validationNumber) {
         this.number += target.innerText;
         this.validationNumber = false;
